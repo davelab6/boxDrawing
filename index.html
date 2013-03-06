@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Boxdrawing by adobe-type-tools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Boxdrawing</h1>
+        <p>Will draw all the box drawing characters and block elements based on parameters.</p>
+
+        <p class="view"><a href="https://github.com/adobe-type-tools/boxDrawing">View the Project on GitHub <small>adobe-type-tools/boxDrawing</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/adobe-type-tools/boxDrawing/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/adobe-type-tools/boxDrawing/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/adobe-type-tools/boxDrawing">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>boxDrawing.py</h1>
+
+<p>Soon after the public release of <a href="https://github.com/adobe/source-code-pro">Source Code Pro</a>, many a notice was received from connoisseurs of fixed-width type, upset about a shortcoming: Unbelievably, the family’s first iteration did not contain <a href="http://en.wikipedia.org/wiki/Box_drawing_characters">Box Drawing Characters</a>. 
+Fortunately, this flaw has since been remedied, and the whole set of Box Drawing Characters, plus all of the Block Elements now are now part of the typeface.  </p>
+
+<p><a href="https://github.com/adobe/source-code-pro">Source Code Pro</a> is a typeface family intended for both programmers and designers. It has a fairly wide range of weights, therefore we agreed to adjust the Box Drawing Characters in their stem width as well, to make for a better corresponding appearance.
+The reasoning behind this decision is that everyone will benefit from this consideration: The programmer will like the screen display adjusted to the chosen text weight. 
+The graphic designer will appreciate a multitude of combination possibilities; and an unseen dynamic range of drawing boxes.</p>
+
+<p>All that is why this script was written. It is not exactly an amazing, or creativity-challenging task to draw those quite generic glyphs.<br>
+Much more fun is derived from writing a script, and generating the silliest box drawing characters over and over again.</p>
+
+<h2>What does this script do?</h2>
+
+<p>This script will draw the complete range of Box Drawing Characters and Block Elements in the font editor of your choice.<br>
+The design of those characters is based on a handful of parameters, which can be changed in the script file itself. 
+Feel free to create Box Drawing Characters that are longer than usual; exceedingly wide, fat (both?); or hairline-thin.  </p>
+
+<p>Time was spent to make this script compatible with the triumvirate of commercial font editing applications; this means that this script will run in <a href="http://doc.robofont.com/">RoboFont</a>, <a href="http://glyphsapp.com/">Glyphs</a>, and even <a href="http://www.fontlab.com/font-editor/fontlab-studio/">FontLab</a> without any modifications.<br>
+You can even run the script straight from the command line, which will generate a new UFO file right to your desktop.</p>
+
+<p><strong>Tested versions:</strong><br>
+Robofont: Version 1.4b (build 1302261653)<br>
+Glyphs: Version 1.3.17 (429)<br>
+FontLab: 5.1.3 (4693)  </p>
+
+<p><strong>Dependencies:</strong><br>
+When using Glyphs or FontLab, <a href="http://robofab.org/">Robofab</a> must be installed and working.
+Also, running the script from the command line will not work without Robofab installed.</p>
+
+<h2>What does this script not do?</h2>
+
+<p>This script is not for adding Box Drawing Characters to existing, compiled fonts.<br>
+It is assumed you have type design software, and font source data available.</p>
+
+<h2>What are Box Drawing Characters?</h2>
+
+<p><strong>Box Drawing</strong> <a href="http://www.unicode.org/charts/PDF/U2500.pdf">Unicode range 2500-257F</a> and <strong>Block Elements</strong> <a href="http://www.unicode.org/charts/PDF/U2580.pdf">Unicode range 2580-259F</a>:</p>
+
+<table>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+<tr>
+<td>U+250x</td>
+<td>─</td>
+<td>━</td>
+<td>│</td>
+<td>┃</td>
+<td>┄</td>
+<td>┅</td>
+<td>┆</td>
+<td>┇</td>
+<td>┈</td>
+<td>┉</td>
+<td>┊</td>
+<td>┋</td>
+<td>┌</td>
+<td>┍</td>
+<td>┎</td>
+<td>┏</td>
+</tr>
+<tr>
+<td>U+251x</td>
+<td>┐</td>
+<td>┑</td>
+<td>┒</td>
+<td>┓</td>
+<td>└</td>
+<td>┕</td>
+<td>┖</td>
+<td>┗</td>
+<td>┘</td>
+<td>┙</td>
+<td>┚</td>
+<td>┛</td>
+<td>├</td>
+<td>┝</td>
+<td>┞</td>
+<td>┟</td>
+</tr>
+<tr>
+<td>U+252x</td>
+<td>┠</td>
+<td>┡</td>
+<td>┢</td>
+<td>┣</td>
+<td>┤</td>
+<td>┥</td>
+<td>┦</td>
+<td>┧</td>
+<td>┨</td>
+<td>┩</td>
+<td>┪</td>
+<td>┫</td>
+<td>┬</td>
+<td>┭</td>
+<td>┮</td>
+<td>┯</td>
+</tr>
+<tr>
+<td>U+253x</td>
+<td>┰</td>
+<td>┱</td>
+<td>┲</td>
+<td>┳</td>
+<td>┴</td>
+<td>┵</td>
+<td>┶</td>
+<td>┷</td>
+<td>┸</td>
+<td>┹</td>
+<td>┺</td>
+<td>┻</td>
+<td>┼</td>
+<td>┽</td>
+<td>┾</td>
+<td>┿</td>
+</tr>
+<tr>
+<td>U+254x</td>
+<td>╀</td>
+<td>╁</td>
+<td>╂</td>
+<td>╃</td>
+<td>╄</td>
+<td>╅</td>
+<td>╆</td>
+<td>╇</td>
+<td>╈</td>
+<td>╉</td>
+<td>╊</td>
+<td>╋</td>
+<td>╌</td>
+<td>╍</td>
+<td>╎</td>
+<td>╏</td>
+</tr>
+<tr>
+<td>U+255x</td>
+<td>═</td>
+<td>║</td>
+<td>╒</td>
+<td>╓</td>
+<td>╔</td>
+<td>╕</td>
+<td>╖</td>
+<td>╗</td>
+<td>╘</td>
+<td>╙</td>
+<td>╚</td>
+<td>╛</td>
+<td>╜</td>
+<td>╝</td>
+<td>╞</td>
+<td>╟</td>
+</tr>
+<tr>
+<td>U+256x</td>
+<td>╠</td>
+<td>╡</td>
+<td>╢</td>
+<td>╣</td>
+<td>╤</td>
+<td>╥</td>
+<td>╦</td>
+<td>╧</td>
+<td>╨</td>
+<td>╩</td>
+<td>╪</td>
+<td>╫</td>
+<td>╬</td>
+<td>╭</td>
+<td>╮</td>
+<td>╯</td>
+</tr>
+<tr>
+<td>U+257x</td>
+<td>╰</td>
+<td>╱</td>
+<td>╲</td>
+<td>╳</td>
+<td>╴</td>
+<td>╵</td>
+<td>╶</td>
+<td>╷</td>
+<td>╸</td>
+<td>╹</td>
+<td>╺</td>
+<td>╻</td>
+<td>╼</td>
+<td>╽</td>
+<td>╾</td>
+<td>╿</td>
+</tr>
+<tr>
+<td>U+258x</td>
+<td>▀</td>
+<td>▁</td>
+<td>▂</td>
+<td>▃</td>
+<td>▄</td>
+<td>▅</td>
+<td>▆</td>
+<td>▇</td>
+<td>█</td>
+<td>▉</td>
+<td>▊</td>
+<td>▋</td>
+<td>▌</td>
+<td>▍</td>
+<td>▎</td>
+<td>▏</td>
+</tr>
+<tr>
+<td>U+259x</td>
+<td>▐</td>
+<td>░</td>
+<td>▒</td>
+<td>▓</td>
+<td>▔</td>
+<td>▕</td>
+<td>▖</td>
+<td>▗</td>
+<td>▘</td>
+<td>▙</td>
+<td>▚</td>
+<td>▛</td>
+<td>▜</td>
+<td>▝</td>
+<td>▞</td>
+<td>▟</td>
+</tr>
+</table><p>Both Box Drawing Characters and Block Elements are mostly at home in the world of text-based UI; you might remember brilliant examples from MS-DOS Defrag or ScanDisk.</p>
+
+<pre><code>    ┌─┬────────────┐
+┌───┘ │ Beautiful  │  
+│     │ box.       │  ┌────────────╖
+│     ╰─┰──────────┤  │ Another    ╟┐
+│       ┃ The same │  │ quite nice ║│
+│       ┃ ole box. │  │ box.       ║│
+└───────┸──────────┘  ╘╤═══════════╝│
+                       └────────────┘       
+</code></pre>
+
+<p>Box Drawing Characters can also be used for graphic design.
+As an example, see the “source code” (pun) of the <a href="http://blogs.adobe.com/typblography/files/2012/12/happy-holidays-2012.pdf">Adobe Type Team holiday card 2012</a>:</p>
+
+<pre><code>╔═*╓─╭╍╮╓─o*›┍━┑╻ ▲,┌─»
+╚═╗║╍╽┅╈╙─╖¡ ┆0┆╽╲╿ ┕━┓
+╚═╜╙━╹©╹╚═╱╳∙┕═┙╵=╹_└─┛
+╦┉╴╓─╮╓─ ╱╳¤╳╲┕ ┎─┎┬┬┒•
+║ ╗║─╮╬(•╱∑╳ɔ╲¡ʻ┣╸ || ┒
+╙─©◊ ◊╙─╱╳╳⅓╳╳╲┆┖─:┗┛ ┸
+┎╲ ╷╭─┨?╱╳¿╳╳▲╲♪╔═╡****
+┃╲╲┃┃─╮╱↑╳╳╳ợ╳╳╲╚═╗from
+╵ H┚╰─ᵒ╱╳╳∞╳╳╳¤╲╞═╝the↓
+↓╎O┊◊ˈ╱╳◉╳%╳╳=╳╳╲◆╦═╦═]
+H╎L┊─╱♪╳╳ʷ╳ ∫╳ §╲┊║A║™]
+A╎I┊╍╱╳∂╳╳◆╳╳╳Ω╳ ╲┊D┊═╗
+P─D──╱╳╳¶╳ ╳$╳  ¤╳┊O┊T║
+P║A┊╱╳ Ø╳╳ƒ╳╳╳☑╳  ╲B┊Y║
+Y║Y┊╱¤╳╳œ╳╳╳Ṃ ╳╳| ╲E┊P║
+│┐S╱╳╳╳ˣ╳╳×╳╳╳◆ ╳¤╳╲┊E│
+↓ !!┟╥─╯┍╇┯█┯╇┑▚│┇──┴─┊
+   ╶═╝┎┘│━┵┼┶━│┈╢TEAM&lt;╯
+   ╺━│┃░▒▓▌!▐▓▒░┃││┼☑┘╳
+</code></pre>
+
+<p>This is how the above text should look like if your browser is using a font with proper box drawing support (e.g. <a href="https://github.com/adobe/source-code-pro">Source Code Pro</a>):<br><img src="img/boxes.png" alt="boxes"><br><img src="img/tree.png" alt="tree"></p>
+
+<h2>Usage:</h2>
+
+<ul>
+<li>Open font editor of your choice (one of the three mentioned above).</li>
+<li>Drag the the script file into the scripts panel.</li>
+<li>Run.</li>
+<li>Watch Box Drawing Characters emerge.</li>
+<li>Done.</li>
+</ul><p>Alternate method:</p>
+
+<ul>
+<li>Run the script on the command line.</li>
+<li>A UFO full of box drawing characters is be stored on your desktop.</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/adobe-type-tools">adobe-type-tools</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
